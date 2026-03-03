@@ -1,5 +1,8 @@
 import 'dotenv/config'
 import { DataSource } from "typeorm";
+import { Estudiante } from '../models/estudianteModel.js';
+import { Profesor } from '../models/profesorModel.js';
+import { Curso } from '../models/cursoModel.js';
 
 
 export const AppDataSource = new DataSource({
@@ -10,5 +13,6 @@ export const AppDataSource = new DataSource({
     password: process.env.PASSWORD || "test",
     database: process.env.DATABASE || "test",
     logging: true,
-    entities: []
+    entities: [Estudiante, Profesor, Curso],
+    synchronize:true
 })
