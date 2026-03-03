@@ -15,6 +15,6 @@ app.use('/profesores', profesoresRoutes)
 app.use('/cursos', cursosRoutes)
 
 
-app.listen(3000, () => {
+app.listen(6500, () => {
     console.log("Activado")
 })
