@@ -1,9 +1,9 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import { Profesor } from "./profesorModel.js";
 import { Estudiante } from "./estudianteModel.js";
 
 @Entity('cursos')
-export class Curso {
+export class Curso extends BaseEntity {
 
 
     @PrimaryGeneratedColumn()
