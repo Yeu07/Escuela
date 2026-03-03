@@ -1,20 +1,19 @@
-import express from 'express';
-import cors from 'cors'
-import morgan from 'morgan';
-import estudiantesRoutes from './routes/estudiantesRoutes.js'
-import profesoresRoutes from './routes/profesoresRoutes.js'
-import cursosRoutes from './routes/cursosRoutes.js'
-
-const app = express();
-
-app.use(morgan('dev'));
-app.use(cors());
-
-app.use("/estudiantes",estudiantesRoutes)
-app.use('/profesores', profesoresRoutes)
-app.use('/cursos', cursosRoutes)
+import app from './app.js'
+import { AppDataSource } from './db/conexion.js';
 
 
-app.listen(6500, () => {
-    console.log("Activado")
-})
+async function main(){
+    try {
+        await AppDataSource.initialize();
+        console.log("Base de Datos conectada")
+        app.listen(6500, () => {
+        console.log("Activado")
+        })
+    } catch (error) {
+        if(error instanceof Error){
+            console.log(error.message)
+        }
+    }
+}
+
+main();
